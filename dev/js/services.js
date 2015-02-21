@@ -5,7 +5,7 @@ angular.module('thoughtdrop.services', [])
   var getMessages = function() {
     return $http({
       method: 'GET',
-      url: 'https://mightyplayground.herokuapp.com' +
+      url: //base
       '/api/messages/'
     })
     .then(function (resp) {
@@ -17,7 +17,7 @@ angular.module('thoughtdrop.services', [])
     var sendPosition = function(data) {
       return $http({
         method: 'POST',
-        url: 'https://mightyplayground.herokuapp.com' +
+        url: //base
         '/api/messages/nearby',
         data: JSON.stringify(data)
       })
@@ -49,7 +49,7 @@ angular.module('thoughtdrop.services', [])
     console.log(data);
     return $http({
       method: 'POST',
-      url: 'https://mightyplayground.herokuapp.com' +
+      url: //base
       '/api/auth/id',
       data: data
     })
@@ -62,7 +62,7 @@ angular.module('thoughtdrop.services', [])
     console.log(data);
     return $http({
       method: 'POST',
-      url: 'https://mightyplayground.herokuapp.com' +
+      url: //base
       '/api/auth/phone',
       data: data
     })

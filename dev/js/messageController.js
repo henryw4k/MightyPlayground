@@ -47,7 +47,7 @@ angular.module('thoughtdrop.messageController', [])
     console.log('sending data! ' + data.message);
     return $http({
       method: 'POST',
-      url: 'https://mightyplayground.herokuapp.com' +
+      url: //base
       '/api/messages',
       data: JSON.stringify(data)
     })
@@ -65,7 +65,7 @@ angular.module('thoughtdrop.messageController', [])
     var sendPosition = function(data) {
       return $http({
         method: 'POST',
-        url:  'https://mightyplayground.herokuapp.com' +
+        url:  //base
         '/api/messages/nearby',
         data: JSON.stringify(data)
       })
