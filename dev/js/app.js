@@ -13,11 +13,11 @@ angular.module('thoughtdrop', ['ionic', 'thoughtdrop.controllers', 'thoughtdrop.
     }
   });
 
-  if(window.localStorage.token === undefined) {
-    $location.path('/login');
-  } else {
-     $state.go('tab.messages');
-  }
+  // if(window.localStorage.token === undefined) {
+  //   $location.path('/login');
+  // } else {
+  //    $state.go('tab.messages');
+  // }
 
   var cachePublicMessages = function(route, sortMessagesBy) {
     console.log('fetching public messages');
@@ -53,6 +53,12 @@ angular.module('thoughtdrop', ['ionic', 'thoughtdrop.controllers', 'thoughtdrop.
     url: '/phone',
     templateUrl: 'templates/phonenumber.html',
     controller: 'AuthCtrl'
+  })
+
+  .state('map2', {
+    url: '/map2',
+    templateUrl: 'templates/map2.html',
+    controller: 'privateController'
   })
 
   .state('map', {
@@ -140,5 +146,5 @@ angular.module('thoughtdrop', ['ionic', 'thoughtdrop.controllers', 'thoughtdrop.
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/messages');
+  $urlRouterProvider.otherwise('/map');
 });

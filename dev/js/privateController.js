@@ -1,11 +1,16 @@
 angular.module('thoughtdrop.privateController', [])
 
-.controller('privateController', function($scope, $timeout, $ionicModal, Private, Geolocation, $window, $localStorage, $cordovaContacts, $location, PrivateDetail, GeofenceService, $state, $stateParams) {
+.controller('privateController', function($scope, $timeout, $ionicModal, Private, Geolocation, $window, $localStorage, $cordovaContacts, $location, PrivateDetail, GeofenceService, $state, $stateParams, CachePublicMessages) {
 
   //TODO: change 'findNearby' to 'findNearbyMessages' (more intuitive)
         //limit number of times user can upvote and downvote to one per message
         //modularize all http requests to services
         //look into using socket.io to handle simultaneous upvote/downvote requests from clients
+
+  $scope.gotomap = function() {
+    CachePublicMessages.goMap();
+  }
+
   $scope.message = {};
   $scope.message.text = '';
   $scope.page = 'new';

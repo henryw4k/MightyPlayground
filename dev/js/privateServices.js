@@ -49,59 +49,60 @@ angular.module('thoughtdrop.privateServices', [])
   };
 
   var saveMessage = function(data, dist) {
-    console.log(JSON.stringify(data));
-    messageStorage.location = { coordinates: [ data.lng(), data.lat()], type: 'Point' };
-    messageStorage.radius = dist;
+    $state.go('map2');
+    // console.log(JSON.stringify(data));
+    // messageStorage.location = { coordinates: [ data.lng(), data.lat()], type: 'Point' };
+    // messageStorage.radius = dist;
 
-    // console.log('PServices message to save before server: ' + JSON.stringify(messageStorage));
-    console.log('/////messageStorage stringified: ' + JSON.stringify(messageStorage));
-    // console.log('!!!messageStorage ' + messageStorage.imageData);
-    console.log('!!URL: ' + messageStorage.signedUrl);
+    // // console.log('PServices message to save before server: ' + JSON.stringify(messageStorage));
+    // console.log('/////messageStorage stringified: ' + JSON.stringify(messageStorage));
+    // // console.log('!!!messageStorage ' + messageStorage.imageData);
+    // console.log('!!URL: ' + messageStorage.signedUrl);
 
-    if (messageStorage.imageData) {
-      console.log('!!!!found imageData'); //imagedata is not an object, its a string!
-      return $http({
-        method: 'PUT',
-        url: messageStorage.signedUrl,
-        data: messageStorage.imageData, //change to image.src?
-        headers: {
-          'Content-Type': 'image/jpeg'
-        }})
-        .then(function(resp) {
-          delete messageStorage.imageData;
-          delete messageStorage.signedUrl;
-          console.log(JSON.stringify(messageStorage));
-          console.log('private image saved');
-          return $http({
-            method: 'POST',
-            url:  //base
-            '/api/messages/private',
-            data: JSON.stringify(messageStorage)
-          })
-          .then(function (resp) {
-            console.log("private message saved");
-            $state.go('tab.privateMessages');
-          })
-          .catch(function (err) {
-            console.log('ERROR!!!!: ' + err);
-          })
-        });
-    }
+    // if (messageStorage.imageData) {
+    //   console.log('!!!!found imageData'); //imagedata is not an object, its a string!
+    //   return $http({
+    //     method: 'PUT',
+    //     url: messageStorage.signedUrl,
+    //     data: messageStorage.imageData, //change to image.src?
+    //     headers: {
+    //       'Content-Type': 'image/jpeg'
+    //     }})
+    //     .then(function(resp) {
+    //       delete messageStorage.imageData;
+    //       delete messageStorage.signedUrl;
+    //       console.log(JSON.stringify(messageStorage));
+    //       console.log('private image saved');
+    //       return $http({
+    //         method: 'POST',
+    //         url:  //base
+    //         '/api/messages/private',
+    //         data: JSON.stringify(messageStorage)
+    //       })
+    //       .then(function (resp) {
+    //         console.log("private message saved");
+    //         $state.go('tab.privateMessages');
+    //       })
+    //       .catch(function (err) {
+    //         console.log('ERROR!!!!: ' + err);
+    //       })
+    //     });
+    // }
     
-    console.log('out of first1111');
-    return $http({
-      method: 'POST',
-      url:  //base
-      '/api/messages/private',
-      data: JSON.stringify(messageStorage)
-    })
-    .then(function (resp) {
-      console.log("private message saved");
-      $state.go('tab.privateMessages');
-    })
-    .catch(function (err) {
-      console.log('ERROR!!!!: ' + err);
-    });
+    // console.log('out of first1111');
+    // return $http({
+    //   method: 'POST',
+    //   url:  //base
+    //   '/api/messages/private',
+    //   data: JSON.stringify(messageStorage)
+    // })
+    // .then(function (resp) {
+    //   console.log("private message saved");
+    //   $state.go('tab.privateMessages');
+    // })
+    // .catch(function (err) {
+    //   console.log('ERROR!!!!: ' + err);
+    // });
 
   };
 
